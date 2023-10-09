@@ -1,5 +1,6 @@
 package fr.saintmartin.yohan.busi.entity;
 
+import fr.saintmartin.yohan.busi.enumeration.AccountType;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -15,6 +16,7 @@ public class BankAccount {
 
     private String alias;
     private double balance;
+    private AccountType type;
     @OneToMany(mappedBy = "bankAccount")
     private List<FinancialTransaction> ftList;
 
@@ -40,6 +42,14 @@ public class BankAccount {
 
     public void setBalance(double balance) {
         this.balance = balance;
+    }
+
+    public AccountType getType() {
+        return type;
+    }
+
+    public void setType(AccountType type) {
+        this.type = type;
     }
 
     public List<FinancialTransaction> getFtList() {
