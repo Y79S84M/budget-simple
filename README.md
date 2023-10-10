@@ -1,6 +1,6 @@
 # BUdget_SImple - (BU_SI)
 
-This app aims at helping everyone managing their family monthly budget.
+This app aims at helping everyone to manage their family monthly budget.
 
 
 ## The project
@@ -15,7 +15,7 @@ Being able to manage this remaining budget the best way, is critical and not alw
 ### Budget simple
 
 I want to be able to manage the family monthly budget on a simple app.
-When I log in to my profile, I can see all key figures that help me managing the family monthly budget, so that I can decide whether I may go ahead with a purchase or not.
+When I log in to my profile, I can see all key figures that help me to manage the family monthly budget, so that I can decide whether I may go ahead with a purchase or not.
 From the same dashboard, I can add a new transaction that replicate the transaction I will see on the bank account statement after purchasing an item from any store.
 The dashboard is then updated with the foreseen remaining budget for the current month.
 

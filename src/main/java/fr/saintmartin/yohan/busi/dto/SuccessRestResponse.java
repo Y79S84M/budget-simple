@@ -1,21 +1,21 @@
 package fr.saintmartin.yohan.busi.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.http.HttpStatus;
 
 public class SuccessRestResponse extends RestResponse {
     private String status;
     private int statusCode;
     private String message;
-    public SuccessRestResponse(String message) {
-        this.message = message;
-        this.statusCode = HttpStatus.OK.value();
-        this.status = HttpStatus.OK.name();
-    }
-    public SuccessRestResponse(String message, int statusCode, String status) {
+    @JsonProperty("data")
+    private Object data;
+
+    public SuccessRestResponse(String message, Object data, int statusCode, String status) {
         super();
         this.message = message;
         this.statusCode = statusCode;
         this.status = status;
+        this.data = data;
     }
 
     public String getStatus() {
@@ -40,5 +40,13 @@ public class SuccessRestResponse extends RestResponse {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public Object getBkAccInfo() {
+        return data;
+    }
+
+    public void setBkAccInfo(Object data) {
+        this.data = data;
     }
 }
