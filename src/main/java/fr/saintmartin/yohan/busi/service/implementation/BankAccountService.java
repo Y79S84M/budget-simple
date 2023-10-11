@@ -7,9 +7,11 @@ import fr.saintmartin.yohan.busi.entity.BankAccount;
 import fr.saintmartin.yohan.busi.mapper.BankAccountMapper;
 import fr.saintmartin.yohan.busi.repository.BankAccountRepository;
 import fr.saintmartin.yohan.busi.service.IBankAccountService;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 @Service
+@Transactional
 public class BankAccountService implements IBankAccountService {
 
     private final BankAccountRepository bkAccRepo;
@@ -19,9 +21,9 @@ public class BankAccountService implements IBankAccountService {
     }
     @Override
     public BankAccountInfo createBankAccount(BankAccountCreation bkAccCreation) {
-        BankAccount bkAcc = BankAccountMapper.from(bkAccCreation);
-        bkAcc = bkAccRepo.save(bkAcc);
-        return BankAccountMapper.toBankAccountInfo(bkAcc);
+            BankAccount bkAcc = BankAccountMapper.from(bkAccCreation);
+            bkAcc = bkAccRepo.save(bkAcc);
+            return BankAccountMapper.toBankAccountInfo(bkAcc);
     }
 
     @Override
@@ -30,4 +32,5 @@ public class BankAccountService implements IBankAccountService {
         bkAcc.setType(updatedBkAcc.getType());
         return bkAccRepo.save(bkAcc);
     }
+
 }

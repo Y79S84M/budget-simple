@@ -39,7 +39,7 @@ https://www.a11yproject.com/checklist/
 
 The application should implement S.O.L.I.D. principles:
 
-- S = Single responsability principle - A class should do one thing.
+- S = Single responsibility principle - A class should do one thing.
 - O = Open/close principle - a class should be opened to extensions but closed to modifications
 - L = Liskov principle - object of a subclass should behave the same way as the object of its superclass. Replacing the superclass object by one of its subclass object should not break the app.
 - I = Interface segregation principle

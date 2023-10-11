@@ -1,17 +1,11 @@
 package fr.saintmartin.yohan.busi.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonRootName;
-
-@JsonRootName("bank_account_info")
 public class BankAccountInfo {
     @JsonProperty("bank_account_id")
     private String accId;
-    @JsonProperty("alias")
     private String alias;
-    @JsonProperty("balance")
     private String balance;
-    @JsonProperty("type")
     private String type;
 
     public String getAccId() {

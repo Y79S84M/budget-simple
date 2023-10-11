@@ -30,8 +30,8 @@ public class BankAccountControllerTest {
     public void createBkAccEndPoint_returns201_WhenBankAccountCreationIsValid() throws Exception {
         BankAccountInfo bkAccInfo = new BankAccountInfo();
         bkAccInfo.setAccId("123-455");
-        bkAccInfo.setAlias("compte courant");
-        bkAccInfo.setBalance("200.00");
+        bkAccInfo.setAlias("joint account");
+        bkAccInfo.setBalance("342.76");
         bkAccInfo.setType("current");
         when(bkAccSrv.createBankAccount(any())).thenReturn(bkAccInfo);
         MvcResult restResp = bkAccCtrl.perform(MockMvcRequestBuilders.post("/bank_account/create")
@@ -39,7 +39,8 @@ public class BankAccountControllerTest {
                 .content(BankAccountFixtures.VALID_CREATION))
                 .andDo(print())
                 .andExpect(status().isCreated()).andReturn();
-        assertThat(restResp.getResponse().getContentAsString()).contains("bank_account_info");
+        assertThat(restResp.getResponse().getContentAsString()).contains("data");
+        assertThat(restResp.getResponse().getContentAsString()).contains("bank_account_id");
     }
 
     @Test
