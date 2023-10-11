@@ -5,18 +5,13 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import fr.saintmartin.yohan.busi.utilities.CustomSerializer;
 
 public class SuccessRestResponse extends RestResponse {
-    private String status;
-    private int statusCode;
-    private String message;
-    @JsonProperty("data")
+
+    @JsonProperty("data_returned")
     @JsonSerialize(using = CustomSerializer.class)
     private Object data;
 
     public SuccessRestResponse(String message, Object data, int statusCode, String status) {
-        super();
-        this.message = message;
-        this.statusCode = statusCode;
-        this.status = status;
+        super(message,statusCode,status);
         this.data = data;
     }
 

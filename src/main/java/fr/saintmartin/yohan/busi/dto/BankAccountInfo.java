@@ -7,7 +7,8 @@ public class BankAccountInfo {
     private String alias;
     private String balance;
     private String type;
-
+    @JsonProperty("created_on")
+    private String createdOn;
     public String getAccId() {
         return accId;
     }
@@ -38,5 +39,13 @@ public class BankAccountInfo {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getCreatedOn() {
+        return createdOn;
+    }
+
+    public void setCreatedOn(String createdOn) {
+        this.createdOn = createdOn;
     }
 }
