@@ -13,9 +13,9 @@ import java.util.UUID;
 public class FinancialTransaction {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID ftId;
-
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long ftId;
+    private UUID uuid;
     private LocalDate date;
     private String recipient;
     private String description;
@@ -27,12 +27,25 @@ public class FinancialTransaction {
     @ManyToOne
     private BankAccount bankAccount;
 
-    public UUID getFtId() {
+    private LocalDate createdOn;
+    private LocalDate updatedOn;
+    private LocalDate deletedOn;
+    private boolean deleted = Boolean.FALSE;
+
+    public Long getFtId() {
         return ftId;
     }
 
-    public void setFtId(UUID ftId) {
+    public void setFtId(Long ftId) {
         this.ftId = ftId;
+    }
+
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
     }
 
     public LocalDate getDate() {
@@ -105,5 +118,37 @@ public class FinancialTransaction {
 
     public void setBankAccount(BankAccount bankAccount) {
         this.bankAccount = bankAccount;
+    }
+
+    public LocalDate getCreatedOn() {
+        return createdOn;
+    }
+
+    public void setCreatedOn(LocalDate createdOn) {
+        this.createdOn = createdOn;
+    }
+
+    public LocalDate getUpdatedOn() {
+        return updatedOn;
+    }
+
+    public void setUpdatedOn(LocalDate updatedOn) {
+        this.updatedOn = updatedOn;
+    }
+
+    public LocalDate getDeletedOn() {
+        return deletedOn;
+    }
+
+    public void setDeletedOn(LocalDate deletedOn) {
+        this.deletedOn = deletedOn;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 }
