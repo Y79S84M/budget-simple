@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class CustomDateTimeFormatterTest {
+public class CustomDateTimeFormatterTests {
     @Test
     public void localDateTimeFormatter_returnsCorrectFormatting(){
         String expected = "01.03.1988 09:45:00";

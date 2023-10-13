@@ -15,10 +15,11 @@ import java.util.List;
 @ControllerAdvice
 public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 
-    private final List<String> errorsDetail = new ArrayList<>();
+    private List<String> errorsDetail;
 
     @ExceptionHandler(BankAccountNotFoundException.class)
     public final ResponseEntity<ErrorRestResponse> handleEntityNotFoundException(BankAccountNotFoundException ex) {
+        errorsDetail = new ArrayList<>();
         String additionalMessage = "The data submitted does not match existing resource.";
         errorsDetail.add(ex.getLocalizedMessage());
         errorsDetail.add(additionalMessage);
@@ -29,8 +30,9 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 
     @Override
     public final ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, @NonNull HttpHeaders headers, @NonNull HttpStatusCode status, @NonNull WebRequest request) {
-        errorsDetail.add(ex.getDetailMessageCode());
-        ErrorRestResponse errResp = new ErrorRestResponse("Impossible to process the request",errorsDetail,request.toString(),
+        errorsDetail = new ArrayList<>();
+        ex.getAllErrors().forEach(err -> errorsDetail.add(err.getDefaultMessage()));
+        ErrorRestResponse errResp = new ErrorRestResponse("Impossible to process the request",errorsDetail,request.getDescription(false),
                 HttpStatus.BAD_REQUEST.value(), "Bad request");
         return handleExceptionInternal(ex,errResp,headers,HttpStatus.BAD_REQUEST,request);
     }

@@ -12,7 +12,7 @@ import java.util.UUID;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class BankAccountMapperTest {
+public class BankAccountMapperTests {
 
     @Test
     public void toAccountType_returnsCURRENT_whenCreateBankAccountRequestBodyContainsTypeCurrent() {

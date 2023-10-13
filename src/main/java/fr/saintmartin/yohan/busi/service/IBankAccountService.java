@@ -4,7 +4,6 @@ import fr.saintmartin.yohan.busi.dto.BankAccountCreation;
 import fr.saintmartin.yohan.busi.dto.BankAccountInfo;
 import fr.saintmartin.yohan.busi.entity.BankAccount;
 import fr.saintmartin.yohan.busi.exception.BankAccountNotFoundException;
-import jakarta.persistence.EntityNotFoundException;
 
 import java.util.UUID;
 

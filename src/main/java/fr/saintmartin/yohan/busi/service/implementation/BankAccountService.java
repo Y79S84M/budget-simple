@@ -7,7 +7,6 @@ import fr.saintmartin.yohan.busi.exception.BankAccountNotFoundException;
 import fr.saintmartin.yohan.busi.mapper.BankAccountMapper;
 import fr.saintmartin.yohan.busi.repository.BankAccountRepository;
 import fr.saintmartin.yohan.busi.service.IBankAccountService;
-import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
@@ -39,7 +38,7 @@ public class BankAccountService implements IBankAccountService {
             updateInfo = BankAccountMapper.toBankAccountInfo(bkAcc);
             return updateInfo;
         }
-        throw new BankAccountNotFoundException("Resource not found.", updateInfo);
+        throw new BankAccountNotFoundException("Resource not found", updateInfo);
     }
 
     @Override

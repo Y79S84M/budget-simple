@@ -3,7 +3,6 @@ package fr.saintmartin.yohan.busi.controller;
 import fr.saintmartin.yohan.busi.dto.*;
 import fr.saintmartin.yohan.busi.service.IBankAccountService;
 import fr.saintmartin.yohan.busi.service.implementation.BankAccountService;
-import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
