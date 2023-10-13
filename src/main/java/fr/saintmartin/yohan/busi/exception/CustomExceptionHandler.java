@@ -32,6 +32,6 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
         errorsDetail.add(ex.getDetailMessageCode());
         ErrorRestResponse errResp = new ErrorRestResponse("Impossible to process the request",errorsDetail,request.toString(),
                 HttpStatus.BAD_REQUEST.value(), "Bad request");
-        return new ResponseEntity<>(errResp,headers,HttpStatus.BAD_REQUEST);
+        return handleExceptionInternal(ex,errResp,headers,HttpStatus.BAD_REQUEST,request);
     }
 }
