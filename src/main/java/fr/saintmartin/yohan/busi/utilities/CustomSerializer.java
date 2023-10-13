@@ -9,7 +9,10 @@ import java.util.Map;
 
 public class CustomSerializer extends JsonSerializer<Object> {
     private final Map<String,String> classNameMapping = Map.of(
-            "BankAccountInfo", "bank_account"
+            "BankAccountCreation", "bank_account",
+            "BankAccountInfo", "bank_account",
+            "WebRequest", "request",
+            "String", "string"
     );
     @Override
     public void serialize(Object o, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {

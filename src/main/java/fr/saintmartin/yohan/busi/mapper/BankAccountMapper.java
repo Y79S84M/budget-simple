@@ -29,13 +29,12 @@ public class BankAccountMapper {
         return bkAcc;
     }
 
-    public static BankAccount map(BankAccountInfo from, BankAccount to) {
+    public static void map(BankAccountInfo from, BankAccount to) {
         to.setUuid(UUID.fromString(from.getAccId()));
         to.setAlias(from.getAlias());
         to.setBalance(Double.parseDouble(from.getBalance()));
         to.setType(toAccountType(from.getType().toLowerCase()));
         to.setUpdatedOn(LocalDate.now());
-        return to;
     }
 
     public static BankAccountInfo toBankAccountInfo(BankAccount bkAcc) {

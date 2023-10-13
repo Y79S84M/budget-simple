@@ -27,24 +27,14 @@ public class BankAccountController {
     public ResponseEntity<RestResponse> createBankAccount(@RequestBody @Valid BankAccountCreation bkAcc) {
         BankAccountInfo bkAccInfo = bkAccSrv.createBankAccount(bkAcc);
         return new ResponseEntity<>(new SuccessRestResponse("Your bank account has been created",bkAccInfo,
-                HttpStatus.CREATED.value(), HttpStatus.CREATED.name()), HttpStatus.CREATED);
+                HttpStatus.CREATED.value(), "Created"), HttpStatus.CREATED);
     }
 
-    @PostMapping(value = "/update", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<RestResponse> updateBankAccount(@RequestBody @Valid BankAccountInfo bkAcc) {
-        try {
-            BankAccountInfo bkAccInfo = bkAccSrv.updateBankAccount(bkAcc);
-            return new ResponseEntity<>(new SuccessRestResponse("Your bank account has been created",bkAccInfo,
-                    HttpStatus.CREATED.value(), HttpStatus.CREATED.name()), HttpStatus.CREATED);
-        } catch(EntityNotFoundException ex) {
-            String technicalMessage = """
-                    "exception_type": %s,
-                    "exception_message": %s,
-                    "description": No resource can be returned with the data you submitted to the application.
-                    """.formatted(ex.getClass().getSimpleName(),ex.getMessage());
-            return new ResponseEntity<>(new ErrorRestResponse(ex.getMessage(),technicalMessage,bkAcc,
-                    HttpStatus.NOT_FOUND.value(), HttpStatus.NOT_FOUND.name()),HttpStatus.NOT_FOUND);
-        }
+    @PutMapping(value = "/update", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<RestResponse> updateBankAccount(@RequestBody @Valid BankAccountInfo bkAccInfo) {
+        bkAccInfo = bkAccSrv.updateBankAccount(bkAccInfo);
+        return new ResponseEntity<>(new SuccessRestResponse("Your bank account has been updated",bkAccInfo,
+                HttpStatus.ACCEPTED.value(), "Accepted"), HttpStatus.ACCEPTED);
     }
 
 }
