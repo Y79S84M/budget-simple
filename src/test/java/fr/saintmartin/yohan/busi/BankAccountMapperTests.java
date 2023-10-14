@@ -17,7 +17,7 @@ public class BankAccountMapperTests {
     @Test
     public void toAccountType_returnsCURRENT_whenCreateBankAccountRequestBodyContainsTypeCurrent() {
         BankAccountCreation bkAccCreation = new BankAccountCreation();
-        bkAccCreation.setBankAccountType("current");
+        bkAccCreation.setType("current");
         bkAccCreation.setBalance(100.00);
         bkAccCreation.setAlias("compte courant");
         BankAccount bkAcc = BankAccountMapper.from(bkAccCreation);
@@ -27,7 +27,7 @@ public class BankAccountMapperTests {
     @Test
     public void toAccountType_returnsSAVING_whenCreateBankAccountRequestBodyContainsTypeSaving() {
         BankAccountCreation bkAccCreation = new BankAccountCreation();
-        bkAccCreation.setBankAccountType("saving");
+        bkAccCreation.setType("saving");
         bkAccCreation.setBalance(100.00);
         bkAccCreation.setAlias("compte épargne");
         BankAccount bkAcc = BankAccountMapper.from(bkAccCreation);
@@ -37,7 +37,7 @@ public class BankAccountMapperTests {
     @Test
     public void toAccountType_returnsDEPOSIT_whenCreateBankAccountRequestBodyContainsTypeDeposit() {
         BankAccountCreation bkAccCreation = new BankAccountCreation();
-        bkAccCreation.setBankAccountType("deposit");
+        bkAccCreation.setType("deposit");
         bkAccCreation.setBalance(100.00);
         bkAccCreation.setAlias("compte épargne");
         BankAccount bkAcc = BankAccountMapper.from(bkAccCreation);

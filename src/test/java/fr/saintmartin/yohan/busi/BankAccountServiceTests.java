@@ -25,7 +25,6 @@ public class BankAccountServiceTests {
         accSrv = new BankAccountService(bkAccRepo);
         BankAccountInfo bkInfo = new ObjectMapper().readValue(BankAccountFixtures.VALID_UPDATE, BankAccountInfo.class);
         when(accSrv.getBankAccountByUUID(UUID.randomUUID())).thenReturn(null);
-        //accSrv.updateBankAccount(any());
         BankAccountNotFoundException bkEx = assertThrows(BankAccountNotFoundException.class, () -> accSrv.updateBankAccount(bkInfo));
 
         assertThat(bkEx).message().isEqualTo("Resource not found");

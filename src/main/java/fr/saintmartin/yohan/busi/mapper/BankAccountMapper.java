@@ -14,16 +14,20 @@ import static java.lang.String.valueOf;
 
 public class BankAccountMapper {
     private static final Map<String, AccountType> accountTypeMapping = Map.of(
-            "current",AccountType.CURRENT,
-            "saving",AccountType.SAVING,
-            "deposit",AccountType.DEPOSIT
+            "CURRENT",AccountType.CURRENT,
+            "SAVING",AccountType.SAVING,
+            "DEPOSIT",AccountType.DEPOSIT
     );
+    private static AccountType toAccountType(String bankAccountType) {
+        return accountTypeMapping.get(bankAccountType);
+    }
+
     public static BankAccount from(BankAccountCreation bkAccCreation) {
         BankAccount bkAcc = new BankAccount();
         bkAcc.setUuid(UUID.randomUUID());
         bkAcc.setAlias(bkAccCreation.getAlias());
         bkAcc.setBalance(bkAccCreation.getBalance());
-        bkAcc.setType(toAccountType(bkAccCreation.getBankAccountType()));
+        bkAcc.setType(toAccountType(bkAccCreation.getType().toUpperCase()));
         bkAcc.setCreatedOn(LocalDate.now());
         bkAcc.setUpdatedOn(LocalDate.now());
         return bkAcc;
@@ -47,7 +51,4 @@ public class BankAccountMapper {
             return bkAccInfo;
     }
 
-    private static AccountType toAccountType(String bankAccountType) {
-        return accountTypeMapping.get(bankAccountType);
-    }
 }
