@@ -30,8 +30,8 @@ public class BankAccountController {
     }
 
     @PutMapping(value = "/update", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<RestResponse> updateBankAccount(@RequestBody @Valid BankAccountInfo bkAccInfo) {
-        bkAccInfo = bkAccSrv.updateBankAccount(bkAccInfo);
+    public ResponseEntity<RestResponse> updateBankAccount(@RequestBody @Valid BankAccountUpdate bkAccUpdate) {
+        BankAccountInfo bkAccInfo = bkAccSrv.updateBankAccount(bkAccUpdate);
         return new ResponseEntity<>(new SuccessRestResponse("Your bank account has been updated",bkAccInfo,
                 HttpStatus.ACCEPTED.value(), "Accepted"), HttpStatus.ACCEPTED);
     }

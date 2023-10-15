@@ -23,7 +23,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
         String additionalMessage = "The data submitted does not match existing resource.";
         errorsDetail.add(ex.getLocalizedMessage());
         errorsDetail.add(additionalMessage);
-        ErrorRestResponse errResp = new ErrorRestResponse("resource not found",errorsDetail,ex.getBkAccInfo(),
+        ErrorRestResponse errResp = new ErrorRestResponse("resource not found",errorsDetail,ex.getBkAccData(),
                 HttpStatus.NOT_FOUND.value(), "Not found");
         return new ResponseEntity<>(errResp,HttpStatus.NOT_FOUND);
     }

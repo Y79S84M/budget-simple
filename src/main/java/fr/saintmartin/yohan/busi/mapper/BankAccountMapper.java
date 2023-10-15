@@ -1,7 +1,8 @@
 package fr.saintmartin.yohan.busi.mapper;
 
-import fr.saintmartin.yohan.busi.dto.BankAccountCreation;
+import fr.saintmartin.yohan.busi.dto.BankAccountDTO;
 import fr.saintmartin.yohan.busi.dto.BankAccountInfo;
+import fr.saintmartin.yohan.busi.dto.BankAccountUpdate;
 import fr.saintmartin.yohan.busi.entity.BankAccount;
 import fr.saintmartin.yohan.busi.enumeration.AccountType;
 import fr.saintmartin.yohan.busi.utilities.CustomDateTimeFormatter;
@@ -10,34 +11,31 @@ import java.time.LocalDate;
 import java.util.Map;
 import java.util.UUID;
 
+import static java.lang.Double.parseDouble;
 import static java.lang.String.valueOf;
 
 public class BankAccountMapper {
     private static final Map<String, AccountType> accountTypeMapping = Map.of(
-            "current",AccountType.CURRENT,
-            "saving",AccountType.SAVING,
-            "deposit",AccountType.DEPOSIT
+            "CURRENT",AccountType.CURRENT,
+            "SAVING",AccountType.SAVING,
+            "DEPOSIT",AccountType.DEPOSIT
     );
-    public static BankAccount from(BankAccountCreation bkAccCreation) {
+    private static AccountType toAccountType(String bankAccountType) {
+        return accountTypeMapping.get(bankAccountType);
+    }
+
+    public static BankAccount mapFrom(BankAccountDTO bkAccData) {
         BankAccount bkAcc = new BankAccount();
         bkAcc.setUuid(UUID.randomUUID());
-        bkAcc.setAlias(bkAccCreation.getAlias());
-        bkAcc.setBalance(bkAccCreation.getBalance());
-        bkAcc.setType(toAccountType(bkAccCreation.getBankAccountType()));
+        bkAcc.setAlias(bkAccData.getAlias());
+        bkAcc.setBalance(parseDouble(bkAccData.getBalance()));
+        bkAcc.setType(toAccountType(bkAccData.getType().toUpperCase()));
         bkAcc.setCreatedOn(LocalDate.now());
         bkAcc.setUpdatedOn(LocalDate.now());
         return bkAcc;
     }
 
-    public static void map(BankAccountInfo from, BankAccount to) {
-        to.setUuid(UUID.fromString(from.getAccId()));
-        to.setAlias(from.getAlias());
-        to.setBalance(Double.parseDouble(from.getBalance()));
-        to.setType(toAccountType(from.getType().toLowerCase()));
-        to.setUpdatedOn(LocalDate.now());
-    }
-
-    public static BankAccountInfo toBankAccountInfo(BankAccount bkAcc) {
+    public static BankAccountInfo mapToBankAccountInfoFrom(BankAccount bkAcc) {
             BankAccountInfo bkAccInfo = new BankAccountInfo();
             bkAccInfo.setAccId(valueOf(bkAcc.getUuid()));
             bkAccInfo.setAlias(bkAcc.getAlias());
@@ -47,7 +45,11 @@ public class BankAccountMapper {
             return bkAccInfo;
     }
 
-    private static AccountType toAccountType(String bankAccountType) {
-        return accountTypeMapping.get(bankAccountType);
+    public static void map(BankAccountUpdate updatedInfo, BankAccount bkAcc) {
+        bkAcc.setUuid(UUID.fromString(updatedInfo.getAccId()));
+        bkAcc.setAlias(updatedInfo.getAlias());
+        bkAcc.setType(toAccountType(updatedInfo.getType().toUpperCase()));
+        bkAcc.setCreatedOn(CustomDateTimeFormatter.toLocalDate(updatedInfo.getCreatedOn()));
+        bkAcc.setUpdatedOn(LocalDate.now());
     }
 }

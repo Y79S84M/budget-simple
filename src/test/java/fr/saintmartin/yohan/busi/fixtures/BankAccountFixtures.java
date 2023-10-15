@@ -25,4 +25,14 @@ public class BankAccountFixtures {
                 "created_on":"13.05.2023"
             }
             """;
+
+    public static final String UPDATE_WITH_INVALID_TYPE = """
+            {
+                "bank_account_id":"a3f50b32-1ee7-4ff3-a32b-348b35ee6150",
+                "alias":"saving account",
+                "type":"checking",
+                "balance":"235.95",
+                "created_on":"13.05.2023"
+            }
+            """;
 }

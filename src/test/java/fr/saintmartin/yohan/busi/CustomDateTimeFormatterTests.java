@@ -22,4 +22,11 @@ public class CustomDateTimeFormatterTests {
         LocalDate date = LocalDate.of(1988,3,1);
         assertThat(CustomDateTimeFormatter.localDateToString(date)).isEqualTo(expected);
     }
+
+    @Test
+    public void toLocalDateMethod_ReturnsCorrectLocalDate() {
+        String date = "13.10.2023";
+        LocalDate result = CustomDateTimeFormatter.toLocalDate(date);
+        assertThat(result).isEqualTo(LocalDate.of(2023,10,13));
+    }
 }
