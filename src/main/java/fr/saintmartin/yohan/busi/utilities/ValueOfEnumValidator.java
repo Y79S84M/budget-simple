@@ -1,6 +1,7 @@
 package fr.saintmartin.yohan.busi.utilities;
 
 import fr.saintmartin.yohan.busi.enumeration.AccountType;
+import fr.saintmartin.yohan.busi.utilities.annotation.ValueOfEnum;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 

@@ -1,6 +1,7 @@
 package fr.saintmartin.yohan.busi;
 
 import fr.saintmartin.yohan.busi.dto.BankAccountCreation;
+import fr.saintmartin.yohan.busi.dto.BankAccountDTO;
 import fr.saintmartin.yohan.busi.dto.BankAccountInfo;
 import fr.saintmartin.yohan.busi.entity.BankAccount;
 import fr.saintmartin.yohan.busi.enumeration.AccountType;
@@ -16,31 +17,31 @@ public class BankAccountMapperTests {
 
     @Test
     public void toAccountType_returnsCURRENT_whenCreateBankAccountRequestBodyContainsTypeCurrent() {
-        BankAccountCreation bkAccCreation = new BankAccountCreation();
-        bkAccCreation.setType("current");
-        bkAccCreation.setBalance(100.00);
+        BankAccountDTO bkAccCreation = new BankAccountCreation();
         bkAccCreation.setAlias("compte courant");
-        BankAccount bkAcc = BankAccountMapper.from(bkAccCreation);
+        bkAccCreation.setType("Current");
+        bkAccCreation.setBalance("100.00");
+        BankAccount bkAcc = BankAccountMapper.mapFrom(bkAccCreation);
         assertThat(bkAcc.getType()).isEqualTo(AccountType.CURRENT);
     }
 
     @Test
     public void toAccountType_returnsSAVING_whenCreateBankAccountRequestBodyContainsTypeSaving() {
         BankAccountCreation bkAccCreation = new BankAccountCreation();
-        bkAccCreation.setType("saving");
-        bkAccCreation.setBalance(100.00);
-        bkAccCreation.setAlias("compte épargne");
-        BankAccount bkAcc = BankAccountMapper.from(bkAccCreation);
+        bkAccCreation.setAlias("compte epargne");
+        bkAccCreation.setType("Saving");
+        bkAccCreation.setBalance("100.00");
+        BankAccount bkAcc = BankAccountMapper.mapFrom(bkAccCreation);
         assertThat(bkAcc.getType()).isEqualTo(AccountType.SAVING);
     }
 
     @Test
     public void toAccountType_returnsDEPOSIT_whenCreateBankAccountRequestBodyContainsTypeDeposit() {
         BankAccountCreation bkAccCreation = new BankAccountCreation();
-        bkAccCreation.setType("deposit");
-        bkAccCreation.setBalance(100.00);
-        bkAccCreation.setAlias("compte épargne");
-        BankAccount bkAcc = BankAccountMapper.from(bkAccCreation);
+        bkAccCreation.setAlias("compte de depot");
+        bkAccCreation.setType("Deposit");
+        bkAccCreation.setBalance("100.00");
+        BankAccount bkAcc = BankAccountMapper.mapFrom(bkAccCreation);
         assertThat(bkAcc.getType()).isEqualTo(AccountType.DEPOSIT);
     }
 
@@ -53,7 +54,7 @@ public class BankAccountMapperTests {
         bkAcc.setCreatedOn(LocalDate.of(2023,10,11));
         bkAcc.setUpdatedOn(LocalDate.of(2023,10,11));
         bkAcc.setAlias("saving account");
-        BankAccountInfo bkAccInfo = BankAccountMapper.toBankAccountInfo(bkAcc);
+        BankAccountInfo bkAccInfo = BankAccountMapper.mapToBankAccountInfoFrom(bkAcc);
 
         assertThat(bkAccInfo.getCreatedOn()).isEqualTo("11.10.2023");
         assertThat(bkAccInfo.getBalance()).isEqualTo("235.67");

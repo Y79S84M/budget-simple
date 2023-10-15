@@ -1,22 +1,22 @@
 package fr.saintmartin.yohan.busi.exception;
 
-import fr.saintmartin.yohan.busi.dto.BankAccountInfo;
+import fr.saintmartin.yohan.busi.dto.BankAccountDTO;
 import jakarta.persistence.EntityNotFoundException;
 
 public class BankAccountNotFoundException extends EntityNotFoundException {
 
-    private BankAccountInfo bkAccInfo;
+    private BankAccountDTO bkAccData;
 
-    public BankAccountNotFoundException(String message, BankAccountInfo dataSubmitted) {
+    public BankAccountNotFoundException(String message, BankAccountDTO dataSubmitted) {
         super(message);
-        bkAccInfo = dataSubmitted;
+        bkAccData = dataSubmitted;
     }
 
-    public BankAccountInfo getBkAccInfo() {
-        return bkAccInfo;
+    public BankAccountDTO getBkAccData() {
+        return bkAccData;
     }
 
-    public void setBkAccInfo(BankAccountInfo bkAccInfo) {
-        this.bkAccInfo = bkAccInfo;
+    public void setBkAccData(BankAccountDTO bkAccUpdate) {
+        this.bkAccData = bkAccUpdate;
     }
 }

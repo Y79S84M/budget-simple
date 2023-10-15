@@ -1,20 +1,13 @@
 package fr.saintmartin.yohan.busi.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+public abstract class BankAccountDTO {
 
-public class BankAccountInfo {
-    @JsonProperty("bank_account_id")
-    private String accId;
-    @JsonProperty("alias")
-    private String alias;
-    @JsonProperty("balance")
-    private String balance;
-    @JsonProperty("type")
-    private String type;
-    @JsonProperty("created_on")
-    private String createdOn;
-    @JsonProperty("updated_on")
-    private String updatedOn;
+    protected String accId;
+    protected String alias;
+    protected String balance;
+    protected String type;
+    protected String createdOn;
+    protected String updatedOn;
 
     public String getAccId() {
         return accId;
@@ -54,5 +47,13 @@ public class BankAccountInfo {
 
     public void setCreatedOn(String createdOn) {
         this.createdOn = createdOn;
+    }
+
+    public String getUpdatedOn() {
+        return updatedOn;
+    }
+
+    public void setUpdatedOn(String updatedOn) {
+        this.updatedOn = updatedOn;
     }
 }

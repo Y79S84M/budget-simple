@@ -2,6 +2,7 @@ package fr.saintmartin.yohan.busi.service.implementation;
 
 import fr.saintmartin.yohan.busi.dto.BankAccountCreation;
 import fr.saintmartin.yohan.busi.dto.BankAccountInfo;
+import fr.saintmartin.yohan.busi.dto.BankAccountUpdate;
 import fr.saintmartin.yohan.busi.entity.BankAccount;
 import fr.saintmartin.yohan.busi.exception.BankAccountNotFoundException;
 import fr.saintmartin.yohan.busi.mapper.BankAccountMapper;
@@ -24,19 +25,21 @@ public class BankAccountService implements IBankAccountService {
     }
     @Override
     public BankAccountInfo createBankAccount(BankAccountCreation bkAccCreation) {
-            BankAccount bkAcc = BankAccountMapper.from(bkAccCreation);
+            BankAccount bkAcc = BankAccountMapper.mapFrom(bkAccCreation);
             bkAcc = bkAccRepo.save(bkAcc);
-            return BankAccountMapper.toBankAccountInfo(bkAcc);
+            return BankAccountMapper.mapToBankAccountInfoFrom(bkAcc);
     }
 
     @Override
-    public BankAccountInfo updateBankAccount(BankAccountInfo updateInfo) throws BankAccountNotFoundException {
+    public BankAccountInfo updateBankAccount(BankAccountUpdate updateInfo) throws BankAccountNotFoundException {
         BankAccount bkAcc = getBankAccountByUUID(UUID.fromString(updateInfo.getAccId()));
         if (null!=bkAcc) {
+            System.err.println(bkAcc.getUuid());
+            System.err.println("Before mapping value : " + bkAcc.getType());
             BankAccountMapper.map(updateInfo, bkAcc);
-            bkAcc = bkAccRepo.save(bkAcc);
-            updateInfo = BankAccountMapper.toBankAccountInfo(bkAcc);
-            return updateInfo;
+            System.err.println("After mapping value : " + bkAcc.getType());
+            bkAccRepo.save(bkAcc);
+            return BankAccountMapper.mapToBankAccountInfoFrom(bkAcc);
         }
         throw new BankAccountNotFoundException("Resource not found", updateInfo);
     }
