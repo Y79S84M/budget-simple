@@ -1,6 +1,6 @@
 package fr.saintmartin.yohan.busi.exception;
 
-import fr.saintmartin.yohan.busi.dto.ErrorRestResponse;
+import fr.saintmartin.yohan.busi.dto.response.ErrorRestResponse;
 import org.springframework.http.*;
 import org.springframework.lang.NonNull;
 import org.springframework.web.bind.MethodArgumentNotValidException;

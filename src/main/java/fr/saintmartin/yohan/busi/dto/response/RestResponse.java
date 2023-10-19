@@ -1,4 +1,4 @@
-package fr.saintmartin.yohan.busi.dto;
+package fr.saintmartin.yohan.busi.dto.response;
 
 import fr.saintmartin.yohan.busi.utilities.CustomDateTimeFormatter;
 

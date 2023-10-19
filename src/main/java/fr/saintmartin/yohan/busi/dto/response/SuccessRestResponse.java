@@ -1,4 +1,4 @@
-package fr.saintmartin.yohan.busi.dto;
+package fr.saintmartin.yohan.busi.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
