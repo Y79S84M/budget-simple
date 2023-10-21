@@ -2,7 +2,6 @@ package fr.saintmartin.yohan.busi.mapper;
 
 import fr.saintmartin.yohan.busi.dto.BankAccountDTO;
 import fr.saintmartin.yohan.busi.dto.BankAccountInfo;
-import fr.saintmartin.yohan.busi.dto.BankAccountUpdate;
 import fr.saintmartin.yohan.busi.entity.BankAccount;
 import fr.saintmartin.yohan.busi.enumeration.AccountType;
 import fr.saintmartin.yohan.busi.utilities.CustomDateTimeFormatter;
@@ -45,7 +44,7 @@ public class BankAccountMapper {
             return bkAccInfo;
     }
 
-    public static void map(BankAccountUpdate updatedInfo, BankAccount bkAcc) {
+    public static void map(BankAccountDTO updatedInfo, BankAccount bkAcc) {
         bkAcc.setUuid(UUID.fromString(updatedInfo.getAccId()));
         bkAcc.setAlias(updatedInfo.getAlias());
         bkAcc.setType(toAccountType(updatedInfo.getType().toUpperCase()));

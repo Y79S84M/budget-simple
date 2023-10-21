@@ -1,6 +1,7 @@
 package fr.saintmartin.yohan.busi;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import fr.saintmartin.yohan.busi.dto.BankAccountDTO;
 import fr.saintmartin.yohan.busi.dto.BankAccountInfo;
 import fr.saintmartin.yohan.busi.dto.BankAccountUpdate;
 import fr.saintmartin.yohan.busi.entity.BankAccount;
@@ -32,13 +33,13 @@ public class BankAccountServiceTests {
 
     @Test
     void updateBankAccount_ThrowsNotFoundException_WhenGetByUUIDReturnsNull() throws Exception {
-        BankAccountUpdate bkUpdatedInfo = new ObjectMapper().readValue(BankAccountFixtures.VALID_UPDATE, BankAccountUpdate.class);
+        BankAccountDTO bkUpdatedInfo = new ObjectMapper().readValue(BankAccountFixtures.VALID_UPDATE, BankAccountUpdate.class);
         assertThrows(BankAccountNotFoundException.class, () -> accSrv.updateBankAccount(bkUpdatedInfo));
     }
 
     @Test
     void updateBankAccount_ReturnsUpdatedBankAccountData() throws Exception {
-        BankAccountUpdate bkUpdatedInfo = new ObjectMapper().readValue(BankAccountFixtures.VALID_UPDATE, BankAccountUpdate.class);
+        BankAccountDTO bkUpdatedInfo = new ObjectMapper().readValue(BankAccountFixtures.VALID_UPDATE, BankAccountUpdate.class);
         BankAccount bkAcc = new BankAccount();
         bkAcc.setAccId(1L);
         bkAcc.setUuid(UUID.fromString(bkUpdatedInfo.getAccId()));

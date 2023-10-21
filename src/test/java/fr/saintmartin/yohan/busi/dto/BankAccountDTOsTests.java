@@ -19,7 +19,7 @@ public class BankAccountDTOsTests {
     }
     @Test
     void violationShouldBeReported_WhenBankAccountCreationTypeIsNotValid() {
-        BankAccountDTO bkAccCr = new BankAccountCreation();
+        BankAccountCreation bkAccCr = new BankAccountCreation();
         bkAccCr.setAlias("compte courant");
         bkAccCr.setType("invalid");
         bkAccCr.setBalance("100.00");
@@ -32,7 +32,7 @@ public class BankAccountDTOsTests {
     }
     @Test
     void violationShouldBeReported_WhenBankAccountUpdateTypeIsNotValid() {
-        BankAccountDTO bkAccUpdate = new BankAccountUpdate();
+        BankAccountUpdate bkAccUpdate = new BankAccountUpdate();
         bkAccUpdate.setAccId(String.valueOf(UUID.randomUUID()));
         bkAccUpdate.setAlias("compte courant");
         bkAccUpdate.setType("invalid");

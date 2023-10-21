@@ -55,7 +55,6 @@ public class BankAccountUpdate extends BankAccountDTO {
     public void setType(String type) {
         this.type = type;
     }
-
     @Override
     public String getCreatedOn() {
         return createdOn;

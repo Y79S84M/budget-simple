@@ -9,7 +9,7 @@ import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 
 @JsonRootName("bank_account_creation")
-public class BankAccountCreation extends BankAccountDTO {
+public class BankAccountCreation extends BankAccountDTO{
     @NotNull(message="Alias must be provided")
     @NotEmpty(message="Alias must not be empty")
     @Length(min = 3, message = "Alias must be at least 3 characters long")

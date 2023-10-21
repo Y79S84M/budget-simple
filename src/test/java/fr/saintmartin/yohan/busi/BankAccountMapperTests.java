@@ -27,7 +27,7 @@ public class BankAccountMapperTests {
 
     @Test
     public void toAccountType_returnsSAVING_whenCreateBankAccountRequestBodyContainsTypeSaving() {
-        BankAccountCreation bkAccCreation = new BankAccountCreation();
+        BankAccountDTO bkAccCreation = new BankAccountCreation();
         bkAccCreation.setAlias("compte epargne");
         bkAccCreation.setType("Saving");
         bkAccCreation.setBalance("100.00");
@@ -37,7 +37,7 @@ public class BankAccountMapperTests {
 
     @Test
     public void toAccountType_returnsDEPOSIT_whenCreateBankAccountRequestBodyContainsTypeDeposit() {
-        BankAccountCreation bkAccCreation = new BankAccountCreation();
+        BankAccountDTO bkAccCreation = new BankAccountCreation();
         bkAccCreation.setAlias("compte de depot");
         bkAccCreation.setType("Deposit");
         bkAccCreation.setBalance("100.00");
