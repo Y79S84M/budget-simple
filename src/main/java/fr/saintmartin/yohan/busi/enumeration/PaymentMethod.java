@@ -1,6 +1,10 @@
 package fr.saintmartin.yohan.busi.enumeration;
 
-public enum PaymentMethod {
+import fr.saintmartin.yohan.busi.utilities.annotation.PaymentMethodValues;
+
+import java.lang.annotation.Annotation;
+
+public enum PaymentMethod implements Annotation {
     BANK_TRANSFER("Bank transfer"),
     CASH("Cash"),
     CREDIT_CARD("Credit card"),
@@ -12,5 +16,10 @@ public enum PaymentMethod {
     }
     public String label(){
         return this.label;
+    }
+
+    @Override
+    public Class<? extends Annotation> annotationType() {
+        return PaymentMethodValues.class;
     }
 }

@@ -3,7 +3,7 @@ package fr.saintmartin.yohan.busi.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
 import fr.saintmartin.yohan.busi.enumeration.AccountType;
-import fr.saintmartin.yohan.busi.utilities.annotation.ValueOfEnum;
+import fr.saintmartin.yohan.busi.utilities.annotation.AccountTypeValues;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
@@ -20,7 +20,7 @@ public class BankAccountCreation extends BankAccountDTO{
     private String balance;
     @NotNull(message = "Type must be provided")
     @NotEmpty(message = "Type must not be empty")
-    @ValueOfEnum(listedValues = {AccountType.CURRENT, AccountType.SAVING, AccountType.DEPOSIT})
+    @AccountTypeValues(enumValues = {AccountType.CURRENT, AccountType.SAVING, AccountType.DEPOSIT})
     @JsonProperty("type")
     private String type;
 

@@ -1,5 +1,5 @@
 package fr.saintmartin.yohan.busi.enumeration;
-import fr.saintmartin.yohan.busi.utilities.annotation.ValueOfEnum;
+import fr.saintmartin.yohan.busi.utilities.annotation.AccountTypeValues;
 
 import java.lang.annotation.Annotation;
 
@@ -10,6 +10,6 @@ public enum AccountType implements Annotation {
 
     @Override
     public Class<? extends Annotation> annotationType(){
-        return ValueOfEnum.class;
+        return AccountTypeValues.class;
     }
 }

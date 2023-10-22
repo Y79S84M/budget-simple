@@ -1,7 +1,7 @@
 package fr.saintmartin.yohan.busi.utilities.annotation;
 
-import fr.saintmartin.yohan.busi.enumeration.AccountType;
-import fr.saintmartin.yohan.busi.utilities.ValueOfEnumValidator;
+import fr.saintmartin.yohan.busi.enumeration.PaymentMethod;
+import fr.saintmartin.yohan.busi.utilities.PaymentMethodValidator;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 
@@ -12,10 +12,10 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = ValueOfEnumValidator.class)
-public @interface ValueOfEnum {
-    AccountType[] listedValues();
-    String message() default "Type must be one of the following values: {listedValues}";
+@Constraint(validatedBy = PaymentMethodValidator.class)
+public @interface PaymentMethodValues {
+    PaymentMethod[] enumValues();
+    String message() default "Type must be one of the following values: {enumValues}";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }

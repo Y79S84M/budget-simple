@@ -9,8 +9,8 @@ import fr.saintmartin.yohan.busi.utilities.annotation.PeriodicityValues;
 import fr.saintmartin.yohan.busi.utilities.annotation.VatValues;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-public class FinancialTransactionCreation extends FinancialTransactionDTO {
 
+public class FinancialTransactionUpdate extends FinancialTransactionDTO {
     @NotBlank
     @JsonProperty("bank_account_id")
     private String bankAccId;
@@ -24,13 +24,13 @@ public class FinancialTransactionCreation extends FinancialTransactionDTO {
     @NotNull
     @PaymentMethodValues(
             enumValues = {
-                PaymentMethod.BANK_TRANSFER,
-                PaymentMethod.CASH,
-                PaymentMethod.CREDIT_CARD,
-                PaymentMethod.DEBIT_CARD,
-                PaymentMethod.DIRECT_DEBIT
+                    PaymentMethod.BANK_TRANSFER,
+                    PaymentMethod.CASH,
+                    PaymentMethod.CREDIT_CARD,
+                    PaymentMethod.DEBIT_CARD,
+                    PaymentMethod.DIRECT_DEBIT
             }
-        )
+    )
     private String paymentMethod;
     @NotBlank
     private String amount;
@@ -43,7 +43,7 @@ public class FinancialTransactionCreation extends FinancialTransactionDTO {
                     VAT.TEN,
                     VAT.TWENTY
             }
-        )
+    )
     private String vat;
     @NotNull
     @PeriodicityValues(
@@ -56,8 +56,11 @@ public class FinancialTransactionCreation extends FinancialTransactionDTO {
                     Periodicity.BIANNUAL,
                     Periodicity.YEARLY
             }
-        )
+    )
     private String periodicity;
+
+    private String createdOn;
+    private String updatedOn;
 
     public String getBankAccId() {
         return bankAccId;
@@ -121,5 +124,21 @@ public class FinancialTransactionCreation extends FinancialTransactionDTO {
 
     public void setPeriodicity(String periodicity) {
         this.periodicity = periodicity;
+    }
+
+    public String getCreatedOn() {
+        return createdOn;
+    }
+
+    public void setCreatedOn(String createdOn) {
+        this.createdOn = createdOn;
+    }
+
+    public String getUpdatedOn() {
+        return updatedOn;
+    }
+
+    public void setUpdatedOn(String updatedOn) {
+        this.updatedOn = updatedOn;
     }
 }
