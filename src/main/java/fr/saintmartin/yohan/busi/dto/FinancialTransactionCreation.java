@@ -31,6 +31,7 @@ public class FinancialTransactionCreation extends FinancialTransactionDTO {
                 PaymentMethod.DIRECT_DEBIT
             }
         )
+    @JsonProperty("payment_method")
     private String paymentMethod;
     @NotBlank
     private String amount;

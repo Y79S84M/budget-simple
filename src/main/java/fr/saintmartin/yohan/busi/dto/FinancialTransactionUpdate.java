@@ -31,6 +31,7 @@ public class FinancialTransactionUpdate extends FinancialTransactionDTO {
                     PaymentMethod.DIRECT_DEBIT
             }
     )
+    @JsonProperty("payment_method")
     private String paymentMethod;
     @NotBlank
     private String amount;
@@ -59,7 +60,10 @@ public class FinancialTransactionUpdate extends FinancialTransactionDTO {
     )
     private String periodicity;
 
+    @JsonProperty("created_on")
     private String createdOn;
+
+    @JsonProperty("updated_on")
     private String updatedOn;
 
     public String getBankAccId() {
