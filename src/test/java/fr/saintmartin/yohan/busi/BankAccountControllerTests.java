@@ -1,5 +1,6 @@
 package fr.saintmartin.yohan.busi;
 
+import fr.saintmartin.yohan.busi.controller.BankAccountController;
 import fr.saintmartin.yohan.busi.exception.BankAccountNotFoundException;
 import fr.saintmartin.yohan.busi.fixtures.BankAccountFixtures;
 import fr.saintmartin.yohan.busi.service.implementation.BankAccountService;
@@ -18,7 +19,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest
+@WebMvcTest(controllers = BankAccountController.class)
 public class BankAccountControllerTests {
 
     @Autowired
