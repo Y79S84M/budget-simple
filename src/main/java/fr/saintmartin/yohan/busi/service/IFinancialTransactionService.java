@@ -6,5 +6,6 @@ import fr.saintmartin.yohan.busi.dto.FinancialTransactionUpdate;
 
 public interface IFinancialTransactionService {
     FinancialTransactionDTO addFtr(FinancialTransactionCreation ftToCreate);
+    FinancialTransactionDTO getAllFtr(Long bankAccountId);
     FinancialTransactionDTO updateFtr(FinancialTransactionUpdate ftToUpdate);
 }

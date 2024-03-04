@@ -30,7 +30,7 @@ public class FinancialTransactionController {
     public ResponseEntity<RestResponse> addFt(@RequestBody @Valid FinancialTransactionCreation ftToCreate) {
         FinancialTransactionDTO ftrDto = ftrSrv.addFtr(ftToCreate);
         return new ResponseEntity<>(
-                new SuccessRestResponse("Financial transaction has successfully been added.",
+                new SuccessRestResponse("Financial transaction has been added successfully.",
                         ftrDto,
                         HttpStatus.CREATED.value(),
                         "Created"),
@@ -41,7 +41,7 @@ public class FinancialTransactionController {
     public ResponseEntity<RestResponse> updateFt(@RequestBody @Valid FinancialTransactionUpdate ftrToUpdate) {
         FinancialTransactionDTO ftrDto = ftrSrv.updateFtr(ftrToUpdate);
         return new ResponseEntity<>(
-                new SuccessRestResponse("Financial transaction has successfully been updated.",
+                new SuccessRestResponse("Financial transaction has been updated successfully.",
                         ftrDto,
                         HttpStatus.ACCEPTED.value(),
                         "Accepted"),

@@ -1,6 +1,8 @@
 package fr.saintmartin.yohan.busi.controller;
 
-import fr.saintmartin.yohan.busi.dto.*;
+import fr.saintmartin.yohan.busi.dto.BankAccountInfo;
+import fr.saintmartin.yohan.busi.dto.BankAccountCreation;
+import fr.saintmartin.yohan.busi.dto.BankAccountUpdate;
 import fr.saintmartin.yohan.busi.dto.response.RestResponse;
 import fr.saintmartin.yohan.busi.dto.response.SuccessRestResponse;
 import fr.saintmartin.yohan.busi.service.IBankAccountService;
